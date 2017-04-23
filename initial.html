@@ -1,0 +1,69 @@
+<!-- <!DOCTYPE html> -->
+<html>
+<head>
+  <title>Sound Cloud App Atom BB</title>
+
+  <script id = 'object'src="https://connect.soundcloud.com/sdk/sdk-3.1.2.js"></script>
+
+  <script src="./public/bundle.js" defer></script>
+</head>
+<body>
+
+
+  <script>
+  process.env.NODE_ENV = 'test';
+
+
+    // let models = require('./models')
+    // let School = models.School;
+    // let Student = models.Student;
+    // var App = require('components/app.js')
+
+    //Require the dev-dependencies
+    const expect = require('chai').expect
+    // let html = require ('./initial.html')
+    let chai = require('chai');
+    let chaiHttp = require('chai-http');
+    // let server = require('./server.js');
+    let should = chai.should();
+    const request = require('supertest');
+    const express = require('express');
+    const app = express();
+    let SC = require("https://connect.soundcloud.com/sdk/sdk-3.1.2.js")
+
+
+    const test = (arg) => {
+      let id = "d6i0wruU7ddayTqrhwszluW0i9aNBlb1"
+      SC.initialize({
+        client_id: id,
+      });
+
+      SC.get('/tracks', {
+        genres: arg,
+        limit: 1
+      }).then((allTracksByGenre) => {
+        console.log(allTracksByGenre)
+        // map through all users and return user ids
+        // const allUsersId = allTracksByGenre.map((tracks)=>{
+        //   return tracks.user_id
+      })
+    }
+    // app.get('/user', function(req, res) {
+    //   res.status(200).json({ name: 'tobi' });
+    // });
+    describe('api test', function(){
+      it('should get all tracks', function() {
+        let result1 = test('rock')
+
+
+        // expect(result1).eql([0, 'string', 2, 3, 'cake', 100, -2])
+        expect(foo).to.be.a('object');
+
+        expect(result1).to.have.lengthOf(1);
+
+
+      })
+    })
+  </script>
+</body >
+</html>
